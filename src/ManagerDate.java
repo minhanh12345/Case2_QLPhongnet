@@ -6,13 +6,13 @@ public class ManagerDate {
 
     public static void doanhThuTheoTime() {
         int[] dateByMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        System.out.println("Nhap ngay bat dau");
+        System.out.println("Nhap ngay bat dau (1-31)");
         int dayStart = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap thang bat dau");
+        System.out.println("Nhap thang bat dau(1-12)");
         int monthStart = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap ngay ket thuc");
+        System.out.println("Nhap ngay ket thuc(1-31)");
         int dayEnd = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap thang ket thuc");
+        System.out.println("Nhap thang ket thuc(1-12");
         int monthEnd = Integer.parseInt(scanner.nextLine());
         int numberDayStart = 0;
         for (int i = 0; i < monthStart - 1; i++) {
