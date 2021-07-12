@@ -81,12 +81,12 @@ public class Manager {
     }
 
     public String showDichvu(int a) {
-        String show ="";
+        String show = "";
         for (int i = 0; i < listCOM.get(a).listNameService.size(); i++) {
             show += listCOM.get(a).listNameService.get(i);
             show += ":";
             show += listCOM.get(a).listPrice.get(i);
-            show+=" ";
+            show+="|";
         }
         return show;
     }
@@ -111,7 +111,7 @@ public class Manager {
             int chooseOnline = scanner.nextInt();
             for (int j = 0; j < listCOM.size(); j++) {
                 if (chooseOnline == listCOM.get(j).getId()) {
-                    System.out.println(listCOM.get(j) + " time: " + listCOM.get(j).getTime() + " Dịch vụ: " + showDichvu(j) + "Tiền máy hiện tại: " + listCOM.get(j).getPrice());
+                    System.out.println(listCOM.get(j) +"\n"+ "Time: " + listCOM.get(j).getTime() +"\n"+ "Dịch vụ: " + showDichvu(j) + "\n"+"Tiền máy hiện tại: " + listCOM.get(j).getPrice());
                 }
             }
         }
@@ -126,15 +126,22 @@ public class Manager {
         }
         System.out.println("chon so may can bat");
         int chooseOffline = scanner.nextInt();
+        int check = -1;
         for (int j = 0; j < listCOM.size(); j++) {
             if (chooseOffline == listCOM.get(j).getId()) {
-                listCOM.get(j).setStatus(true);
-                Thread thread = new Thread(listCOM.get(j));
-                thread.start();
+                check = j;
             }
         }
-        System.out.println("COM" + chooseOffline + " đã bật");
-        writelistCOM();
+        if (check < 0) {
+            System.out.println("Máy ko tồn tại");
+        } else {
+            listCOM.get(check).setStatus(true);
+            Thread thread = new Thread(listCOM.get(check));
+            thread.start();
+            System.out.println("COM" + chooseOffline + " đã bật");
+            writelistCOM();
+        }
+
     }
 
 
